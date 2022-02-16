@@ -1,0 +1,47 @@
+.composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        position: absolute;
+        z-index: 10;
+        transition: all .2;
+        outline-offset: 2rem;
+        // make all animations (hover) in .2s...outline offset puts space between picture and green border
+
+        &--p1 {
+            left: 0;
+            top: -2rem;
+            // starts at top left of parent composition element hence relative position
+        }
+    
+        &--p2 {
+            right: 0;
+            top: 2rem;
+           // starts at top right of parent composition element hence relative position
+        }
+    
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+            // 20 percent from the left 10 rem down
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary;
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+            // makes picture bigger and increases box shadow and makes picture come up a bit off page (translatey)
+        }
+    }
+
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+
+    // when we hover over composition class select the photo that is not hovered
+}
+
